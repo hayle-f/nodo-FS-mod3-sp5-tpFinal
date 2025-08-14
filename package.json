@@ -1,0 +1,23 @@
+{
+  "name": "nodo-fs-mod3-sp5-1-hf",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "app.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-validator": "^7.2.1",
+    "lodash": "^4.17.21",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.17.1"
+  }
+}
