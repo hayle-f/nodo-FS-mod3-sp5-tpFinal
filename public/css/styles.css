@@ -1,0 +1,137 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+  padding: 32px;
+  text-align: center;
+}
+
+/* -------- TÍTULOS --------  */
+h1, h2 {
+  color:  #303030;
+  margin-bottom: 24px;
+}
+
+/* -------- TABLA -------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px auto 25px;
+  background-color: white;
+  box-shadow: 0 2px 5px #0000001a;
+}
+
+thead {
+  background-color: #e0e0e0;
+  color: #222222ec;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+tfoot {
+  background-color: #f0f0f0;
+  font-weight: 500;
+}
+
+tbody>tr:hover {
+  background-color: #f9f9f9;
+}
+
+input[type="checkbox"] {
+  
+  accent-color: #797979a2;
+}
+
+/* --------  BOTON Mas info  --------  */
+button {
+  background-color: #e0e0e0;
+  color: #696969;
+  border: 0.5px solid #797979a2;
+  padding: 1px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: font-size 0.3s ease;
+}
+
+button:hover {
+  font-size: 16px;
+}
+
+#verTarifas {
+  font-size:medium;
+  background-color: #797979d0;
+  color: #f1f1f1;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 8px;     
+}
+
+#verTarifas:hover {
+  background-color: #797979;
+}
+
+
+
+/* -------- MODAL ------- */
+
+#modalInfoCompleta {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.89); 
+  display: none; 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 1000; 
+}
+
+.modal-contenido {
+  background-color: #f0efef;
+  padding: 20px;
+  margin: auto;
+  border-radius: 12px; 
+  width: 50%;
+  box-shadow: 0 6px 20px #00000033; 
+  text-align: center;
+}
+
+.modal-contenido img {
+  margin: 20px 0;
+  width: 250px;
+}
+
+#cerrarModal {
+  font-size: small;
+  background-color: #797979d0;
+  color: #f1f1f1;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 8px;   
+}
+
+#cerrarModal:hover {
+  background-color: #797979;
+}
+
+/* -------- SECCIÓN DE RESULTADOS O TARIFAS --------  */
+#tarifas {
+  margin-top: 50px;
+}

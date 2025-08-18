@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Crear Nuevo País</h2>
+
+  <% if (errores && errores.length > 0) { %>
+    <div class="mensaje-error">
+      <ul>
+        <% errores.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form class="form-card" action="/paises/crear" method="POST">
+    <%- include('partials/formPais') %>
+
+    <div class="buttons">
+      <a href="/paises" class="button cancelar">Cancelar</a>
+      <button type="submit" class="button">Crear</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="container">
+  <%- include('partials/modalPais', { pais }) %>
+  <div class="acciones-detalle">
+    <a href="/paises" class="button cancelar">Cancelar</a>
+    <form class="form-simple" action="/paises/<%= pais._id %>?_method=DELETE" method="POST">
+      <button type="submit" class="button eliminar">Confirmar eliminación</button>
+    </form>
+  </div>
+</div>
+

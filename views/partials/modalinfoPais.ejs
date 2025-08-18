@@ -1,0 +1,45 @@
+<h2><%= pais.name || '-' %></h2>
+
+<dl>
+  <dt>Continente:</dt>
+  <dd><%= pais.continente || '-' %></dd>
+
+  <dt>Región:</dt>
+  <dd><%= pais.region || '-' %></dd>
+
+  <dt>Subregión:</dt>
+  <dd><%= pais.subregion || '-' %></dd>
+
+  <dt>Capital:</dt>
+  <dd><%= pais.capital?.join(', ') || '-' %></dd>
+
+  <dt>Lenguajes:</dt>
+  <dd><%= pais.languages?.join(', ') || '-' %></dd>
+
+  <dt>Población:</dt>
+  <dd><%= pais.population?.toLocaleString() || '-' %></dd>
+
+  <dt>Área:</dt>
+  <dd><%= pais.area || '-' %></dd>
+
+  <dt>Países limítrofes:</dt>
+  <dd><%= pais.borders?.join(', ') || '-' %></dd>
+
+  <dt>Latlng:</dt>
+  <dd><%= pais.latlng?.join(', ') || '-' %></dd>
+
+  <dt>Zona horaria:</dt>
+  <dd><%= pais.timezones?.join(', ') || '-' %></dd>
+
+  <dt>Gini:</dt>
+  <dd><%= pais.gini || '-' %></dd>
+
+  <dt>Bandera:</dt>
+  <dd>
+    <% if (pais.flags?.svg) { %>
+      <img id="bandera" src="<%= pais.flags.svg %>" alt="Bandera" width="100">
+    <% } else { %>
+      -
+    <% } %>
+  </dd>
+</dl>

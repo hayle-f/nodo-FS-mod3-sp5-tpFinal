@@ -1,0 +1,64 @@
+<div class="form-group">
+  <label for="name">Nombre oficial *</label>
+  <input type="text" id="name" name="name.official" value="<%= pais?.name || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="capital">Capital(es) (separadas por coma) *</label>
+  <input type="text" id="capital" name="capital" value="<%= pais?.capital?.join(', ') || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="continente">Continente</label>
+  <input type="text" id="continente" name="continente" value="<%= pais?.continente || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="region">Región</label>
+  <input type="text" id="region" name="region" value="<%= pais?.region || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="subregion">Subregión</label>
+  <input type="text" id="subregion" name="subregion" value="<%= pais?.subregion || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="languages">Lenguajes (separados por coma)</label>
+  <input type="text" id="languages" name="languages" value="<%= pais?.languages?.join(', ') || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="population">Población *</label>
+  <input type="number" id="population" name="population" value="<%= pais?.population || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="area">Área *</label>
+  <input type="number" step="any" id="area" name="area" value="<%= pais?.area || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="borders">Países limítrofes (códigos, separados por coma)</label>
+  <input type="text" id="borders" name="borders" value="<%= pais?.borders?.join(', ') || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="latlng">LatLng (separados por coma)</label>
+  <input type="text" id="latlng" name="latlng" value="<%= pais?.latlng?.join(', ') || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="timezones">Zona(s) horaria(s) (separadas por coma)</label>
+  <input type="text" id="timezones" name="timezones" value="<%= pais?.timezones?.join(', ') || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="gini">Gini (0-100)</label>
+  <input type="number" step="any" id="gini" name="gini" value="<%= pais?.gini || '' %>"/>
+</div>
+
+<div class="form-group">
+  <label for="flag">URL Bandera</label>
+  <input type="text" id="flag" name="flags.svg" value="<%= pais?.flags?.svg || '' %>"/>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+
+  <!-- Mensajes de éxito -->
+  <div id="mensaje-exito-container">
+    <% if (exito === 'creado') { %>
+      <p class="mensaje-exito">✅ País creado con éxito.</p>
+    <% } else if (exito === 'editado') { %>
+      <p class="mensaje-exito">✅ País editado con éxito.</p>
+    <% } else if (exito === 'eliminado') { %>
+      <p class="mensaje-exito">✅ País eliminado con éxito.</p>
+    <% } %>
+  </div>
+
+  <h1>Listado de Países Hispanohablantes</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Población</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% paises.forEach(pais => { %>
+        <tr>
+          <td><%= pais.name %></td>
+          <td><%= pais.capital?.[0] || '-' %></td>
+          <td><%= pais.population.toLocaleString() || '-' %></td>
+          <td class="acciones">
+            <a href="/paises/<%= pais._id %>" title="Ver detalles" class="icono info">➕</a>
+            <a href="/paises/editar/<%= pais._id %>" title="Editar" class="icono editar">✏️</a>
+            <a href="/paises/<%= pais._id %>/confirmar-eliminacion" title="Eliminar" class="icono eliminar">🗑️</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+  setTimeout(() => {
+    const mensaje = document.querySelector('.mensaje-exito');
+    if (mensaje) mensaje.classList.add('oculto');
+  }, 1500);
+</script>

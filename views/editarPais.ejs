@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Editar País</h2>
+
+  <% if (errores && errores.length > 0) { %>
+    <div class="mensaje-error">
+      <ul>
+        <% errores.forEach(error => { %>
+          <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form class="form-card" action="/paises/editar/<%= pais._id %>?_method=PUT" method="POST">
+    <%- include('partials/formPais', { pais }) %>
+
+    <div class="buttons">
+      <a href="/paises" class="button cancelar">Cancelar</a>
+      <button type="submit" class="button">Guardar cambios</button>
+    </div>
+  </form>
+</div>
