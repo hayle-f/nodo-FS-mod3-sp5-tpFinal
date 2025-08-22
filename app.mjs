@@ -16,9 +16,6 @@ const PORT = process.env.PORT || 3000;
 // Servir archivos estáticos (css)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Conectar a MongoDB
-connectDB();
-
 // Middleware para parsear formularios urlencoded y JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -54,7 +51,14 @@ app.use((req, res) => {
     res.status(404).send({ mensaje: "Rutas no encontrada" });
 });
 
-// Iniciar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en: http://localhost:${PORT}/`);
-});
+// Arrancar servidor solo después de conectar a MongoDB
+(async () => {
+  try {
+    await connectDB(); // espera a que la DB esté lista
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en: http://localhost:${PORT}/`);
+    });
+  } catch (err) {
+    console.error('No se pudo iniciar el servidor, error al conectar DB:', err);
+  }
+})();

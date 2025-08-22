@@ -78,6 +78,7 @@ export async function mostrarFormEditarPaisController(req, res) {
     try {
         const { id } = req.params;
         const pais = await obtenerPaisPorId(id);
+        
         if (!pais) {
             return res.status(404).send({ mensaje: 'Pais no encontrado.' });
         }
@@ -96,6 +97,7 @@ export async function modificarPaisController(req, res) {
         const { id } = req.params;
         //pedir datos que vienen fusionados del middleware
         const nuevosDatos = req.body;
+        /* console.log('Datos recibidos en req.body:', req.body); */
 
         const paisModificado = await modificarPais(id, nuevosDatos);
 

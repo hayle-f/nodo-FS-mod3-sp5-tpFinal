@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //Llamada a la API para obtener los paises, y utilizacion de fn para hacer la limpieza
-export async function obtenerPaises() {
+export async function obtenerPaisesAPI() {
     try {
         const response = await axios.get('https://restcountries.com/v3.1/region/america');
         const datos = response.data;
@@ -16,6 +16,7 @@ export async function obtenerPaises() {
 
     } catch (error) {
         console.log('Error al obtener los paises:', error);
+        return [];
     }
 }
 

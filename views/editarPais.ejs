@@ -11,8 +11,8 @@
     </div>
   <% } %>
 
-  <form class="form-card" action="/paises/editar/<%= pais._id %>?_method=PUT" method="POST">
-    <%- include('partials/formPais', { pais }) %>
+  <form class="form-card" action="/paises/editar/<%= pais._id %>?_method=PUT" method="POST" novalidate>
+    <%- include ('partials/formPais', { pais }) %>
 
     <div class="buttons">
       <a href="/paises" class="button cancelar">Cancelar</a>

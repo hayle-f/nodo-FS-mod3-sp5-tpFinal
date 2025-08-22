@@ -4,7 +4,7 @@ import IRepository from "./IRepository.mjs";
 class PaisesRepository extends IRepository {
 
     async obtenerTodos() {
-        return await paisModel.find({});
+        return await paisModel.find({ creator: "Haylén Ferrario" });
     }
 
     async obtenerPorId(id) {
