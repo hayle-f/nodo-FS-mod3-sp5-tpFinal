@@ -13,11 +13,25 @@
 
   <h1>Listado de Países Hispanohablantes</h1>
 
+  <div class="filtro">
+    <label  for="filtroClave">Filtrar por:</label>
+    <select id="filtroClave">
+      <option value="">-- Seleccionar --</option>
+      <option value="name">Nombre</option>
+      <option value="capital">Capital</option>
+      <option value="region">Región</option>
+      <option value="population">Población</option>
+    </select>
+
+    <div id="filtroInput"></div>
+  </div>
+
   <table>
     <thead>
       <tr>
         <th>Nombre</th>
         <th>Capital</th>
+        <th>Region</th>
         <th>Población</th>
         <th>Acciones</th>
       </tr>
@@ -27,6 +41,7 @@
         <tr>
           <td><%= pais.name %></td>
           <td><%= pais.capital?.[0] || '-' %></td>
+          <td><%= pais.region || '-' %></td>
           <td><%= pais.population.toLocaleString() || '-' %></td>
           <td class="acciones">
             <a href="/paises/<%= pais._id %>" title="Ver detalles" class="icono info">➕</a>
@@ -40,9 +55,5 @@
 
 </div>
 
-<script>
-  setTimeout(() => {
-    const mensaje = document.querySelector('.mensaje-exito');
-    if (mensaje) mensaje.classList.add('oculto');
-  }, 1500);
-</script>
+<script src="/js/filtros.js"></script>
+<script src="/js/mensajes-error.js"></script>
