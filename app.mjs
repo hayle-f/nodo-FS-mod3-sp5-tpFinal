@@ -1,3 +1,4 @@
+import 'dotenv/config'; 
 import express from 'express';
 import path from 'path';
 import expressEjsLayouts from 'express-ejs-layouts';
@@ -13,17 +14,17 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Servir archivos estáticos (css)
+// Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware para parsear formularios urlencoded y JSON
+// Middleware para parsear formularios y JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Middleware para soportar PUT y DELETE vía formularios con ?_method=PUT o DELETE
+// Middleware para soportar PUT y DELETE vía formularios
 app.use(methodOverride('_method'));
 
-// Middleware para variables locales por defecto en las vistas
+// Variables locales por defecto en las vistas
 app.use((req, res, next) => {
   res.locals.errores = [];
   res.locals.pais = {};
@@ -34,11 +35,11 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-//configuracion de express-ejs-layouts
+// Configuración de express-ejs-layouts
 app.use(expressEjsLayouts);
 app.set('layout', 'layout');
 
-// Ruta raíz de INDEX 
+// Ruta raíz
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -46,9 +47,9 @@ app.get('/', (req, res) => {
 // Rutas de la API
 app.use('/', paisesRoutes);
 
-// Manejo de errores para rutas no encontradas (404)
+// Manejo de errores 404
 app.use((req, res) => {
-    res.status(404).send({ mensaje: "Rutas no encontrada" });
+    res.status(404).send({ mensaje: "Ruta no encontrada" });
 });
 
 // Arrancar servidor solo después de conectar a MongoDB

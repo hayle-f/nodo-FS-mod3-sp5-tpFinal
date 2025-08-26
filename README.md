@@ -97,6 +97,8 @@ La aplicación consume datos de países desde una API externa, almacena los dato
 📄 package.json                  # Dependencias y scripts del proyecto
 📄 package-lock.json             # Lockfile de dependencias
 📄 README.md                     # Documentación del proyecto
+📄 .env                          # ⚠️ Variables de entorno (NO se sube a GitHub)
+📄 .gitignore                    # Archivos/carpetas a ignorar por git (incluye .env y node_modules/)
 ```
 
 ---
