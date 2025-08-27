@@ -1,11 +1,11 @@
-// validations/transformarDatosPais.mjs
-
+// Convierte strings separados por comas en array, limpia espacios
 function transformarStringAArray(campo) {
   if (typeof campo === 'string' && campo.length > 0) {
     return campo.split(',').map(p => p.trim()).filter(p => p.length > 0);
   }
   return Array.isArray(campo) ? campo : [];
 }
+
 
 export function transformarDatosPais(req, res, next) {
   const datos = req.body;

@@ -104,7 +104,7 @@ h1, h2 {
 
 table {
   width: 95%;
-  margin: 15px auto 30px;
+  margin: 15px auto 15px;
   border-collapse: collapse;
   background-color: white;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -443,4 +443,22 @@ footer {
 
 #link-repo i {
   color: white;
+}
+
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+  margin-bottom: 6px; 
+}
+
+.paginacion button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.paginacion button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

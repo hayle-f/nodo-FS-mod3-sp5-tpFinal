@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Definición del esquema de País con sus validaciones
 const paisesSchema = new mongoose.Schema({
     name: { 
         type: String, 
@@ -47,41 +48,3 @@ const paisesSchema = new mongoose.Schema({
 const Paises = mongoose.model('Pais', paisesSchema, 'Grupo-02');
 
 export default Paises;
-
-
-
-
-/* import mongoose from "mongoose";
-
-const paisesSchema = new mongoose.Schema({
-    // Obligatorio y mínimo 3 caracteres, máximo 90
-    name: { type: String, required: true, minlength: 3, maxlength: 90 },
-
-    // Obligatorio, al menos un elemento
-    capital: { type: [String], required: true, validate: v => v.length > 0 },
-
-    // Área obligatoria, positiva
-    area: { type: Number, required: true, min: 0 },
-
-    // Población obligatoria, entero positivo
-    population: { type: Number, required: true, min: 0 },
-
-    // Opcionales, el middleware se encarga de validar longitud/códigos
-    borders: { type: [String], default: [] },
-    region: { type: String },
-    subregion: { type: String },
-    languages: { type: [String], default: [] },
-    latlng: { type: [Number], default: [] },
-    gini: { type: Number, default: null },
-    flags: { type: String, default: null },
-    timezones: { type: [String], default: [] },
-    continents: { type: [String], default: [] },
-
-    // Obligatorio, default si no se pasa
-    creator: { type: String, required: true, default: "Haylén Ferrario" }
-});
-
-const Paises = mongoose.model('Pais', paisesSchema, 'Grupo-02');
-
-export default Paises;
- */

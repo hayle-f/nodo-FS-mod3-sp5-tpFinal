@@ -33,7 +33,7 @@ function filtrarPaisesEnEspañol(paises) {
 function limpiarPaises(paises) {
   return paises.map(pais => {
     return {
-      name: pais.name?.nativeName?.spa?.official || pais.name?.official || "Desconocido",
+      name: pais.name?.nativeName?.spa?.official || pais.name?.official || pais.name?.common || "Desconocido",
       capital: pais.capital || [],
       region: pais.region || "Desconocida",
       subregion: pais.subregion || "Desconocida",

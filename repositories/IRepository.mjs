@@ -1,3 +1,6 @@
+// Clase base que define la interfaz de un repositorio genérico
+// Todos los métodos deben ser implementados por las clases que extiendan esta interfaz
+
 class IRepository {
     
     obtenerTodos() {

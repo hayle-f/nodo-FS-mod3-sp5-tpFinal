@@ -1,5 +1,6 @@
 import { obtenerTodosPaises, obtenerPaisPorId, obtenerPaisPorAtributo, crearNuevoPais, modificarPais, eliminarPais } from '../services/paisesService.mjs';
 
+// Controlador que obtiene todos los países y renderiza el dashboard
 export async function obtenerTodosPaisesController(req, res) {
     try {
        
@@ -17,7 +18,7 @@ export async function obtenerTodosPaisesController(req, res) {
     }
 }
 
-// Obtener pais por id
+// Controlador que obtiene un país por su ID y renderiza la vista de detalle
 export async function obtenerPaisPorIdController(req, res) {
     try {
        const { id } = req.params;
@@ -34,7 +35,7 @@ export async function obtenerPaisPorIdController(req, res) {
     }
 }
 
-// Obtener pais por Atributo/Valor
+// Controlador que obtiene países por un atributo/valor
 export async function obtenerPaisPorAtributoController(req, res) {
     try {
         const { atributo, valor } = req.params;
@@ -51,7 +52,7 @@ export async function obtenerPaisPorAtributoController(req, res) {
     }
 }
 
-// Mostrar formulario crear
+// Controlador para mostrar formulario de creación
 export async function mostrarFormCrearPaisController(req, res) {
     try {
         res.render('crearPais');
@@ -60,7 +61,7 @@ export async function mostrarFormCrearPaisController(req, res) {
     }
 }
 
-// Creacion nuevo Pais
+// Controlador que crea un nuevo país
 export async function crearNuevoPaisController(req, res) {
     try {
         const datosPais = req.body;
@@ -73,7 +74,7 @@ export async function crearNuevoPaisController(req, res) {
     }
 }
 
-// Mostrar formulario editar
+// Controlador para mostrar formulario de edición
 export async function mostrarFormEditarPaisController(req, res) {
     try {
         const { id } = req.params;
@@ -91,7 +92,7 @@ export async function mostrarFormEditarPaisController(req, res) {
 }
 
 
-// Modificar Pais
+// Controlador que modifica un país existente
 export async function modificarPaisController(req, res) {
     try {
         const { id } = req.params;
@@ -108,7 +109,7 @@ export async function modificarPaisController(req, res) {
     }
 }
 
-// Mostrar formulario eliminar
+// Controlador para mostrar formulario de eliminación
 export async function mostrarFormEliminarController(req, res) {
     try {
         const { id } = req.params;
@@ -124,7 +125,7 @@ export async function mostrarFormEliminarController(req, res) {
     }
 } 
 
-// Eliminar pais
+// Controlador que elimina un país
 export async function eliminarPaisController(req, res) {
     try {
         const { id } = req.params;

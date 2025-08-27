@@ -3,14 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const filtroInput = document.getElementById("filtroInput");
   const filas = document.querySelectorAll("tbody tr");
 
+  // Cada vez que cambia la opción del select
   filtroClave.addEventListener("change", () => {
-    filtroInput.innerHTML = ""; // limpio el div del input cada vez
+    filtroInput.innerHTML = ""; // Limpiar inputs anteriores
 
+    // Si no hay filtro seleccionado, mostrar todas las filas
     if (!filtroClave.value) {
-      filas.forEach(fila => fila.style.display = ""); // muestro todas
+      filas.forEach(fila => fila.style.display = ""); 
       return;
     }
 
+    // Filtrado numérico (mín y máx) para población
     if (filtroClave.value === "population") {
       const inputMin = document.createElement("input");
       inputMin.type = "number";
@@ -22,9 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
       inputMax.placeholder = "máx";
       inputMax.min = 0;
 
+      // Agrego los inputs al contenedor
       filtroInput.appendChild(inputMin);
       filtroInput.appendChild(inputMax);
 
+      // Función que aplica el filtro a cada fila
       const filtrar = () => {
         const min = inputMin.value ? parseInt(inputMin.value, 10) : 0;
         const max = inputMax.value ? parseInt(inputMax.value, 10) : Infinity;
@@ -36,15 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       };
 
+      // Aplico el filtro cada vez que cambian los inputs
       inputMin.addEventListener("input", filtrar);
       inputMax.addEventListener("input", filtrar);
 
     } else {
+      // Filtrado de texto para name, capital o region
       const input = document.createElement("input");
       input.type = "text";
       input.placeholder = `Escriba el/la ${filtroClave.options[filtroClave.selectedIndex].text}`;
       filtroInput.appendChild(input);
 
+      // Filtra mientras se escribe
       input.addEventListener("input", () => {
         const valor = input.value.toLowerCase();
 

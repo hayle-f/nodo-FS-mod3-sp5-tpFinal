@@ -1,9 +1,10 @@
 
 import mongoose from "mongoose";
 
+// Función para conectar a la base de datos MongoDB
 export async function connectDB() {
     try {
-        // Usar la URI del .env
+        // Usar la URI definida en el archivo .env
         await mongoose.connect(process.env.MONGO_URI);
         console.log('Conexión exitosa con MongoDB');
     } catch(err) {
