@@ -56,18 +56,6 @@ app.use((req, res) => {
     res.status(404).send({ mensaje: "Ruta no encontrada" });
 });
 
-/* // Arrancar servidor solo después de conectar a MongoDB
-(async () => {
-  try {
-    await connectDB(); // espera a que la DB esté lista
-    app.listen(PORT, () => {
-      console.log(`Servidor corriendo en: http://localhost:${PORT}/`);
-    });
-  } catch (err) {
-    console.error('No se pudo iniciar el servidor, error al conectar DB:', err);
-  }
-})(); */
-
 // Arrancar servidor solo después de conectar a MongoDB
 (async () => {
   try {

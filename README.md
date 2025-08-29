@@ -33,6 +33,7 @@ La aplicación consume datos de países desde una API externa, almacena los dato
 - Axios → cliente HTTP para consumir la API externa.
 - Express Validator → middleware para validar datos en formularios y peticiones.
 - Method-Override → permite usar métodos HTTP como PUT y DELETE desde formularios HTML.
+- Node-Cron → programación de tareas periódicas (actualización automática de datos)
 - HTML5, CSS y JS → tecnologías base para la construcción del frontend.
 - Git & GitHub → control de versiones y alojamiento del repositorio.
 
@@ -46,6 +47,9 @@ La aplicación consume datos de países desde una API externa, almacena los dato
 
 📁 controllers/                 # Lógica de negocio de la app
    └─ paisesController.mjs      # Controlador principal de países: maneja requests y responses del CRUD
+
+📁 cron/                        # Node-cron
+   └─ cronActualizarPaises.mjs  # logica que actualiza automáticamente los países cada X horas
 
 📁 models/                      # Modelos de datos (Mongoose)
    └─ paisModel.mjs             # Modelo País: esquema y validaciones de MongoDB
@@ -97,7 +101,7 @@ La aplicación consume datos de países desde una API externa, almacena los dato
 📄 package.json                  # Dependencias y scripts del proyecto
 📄 package-lock.json             # Lockfile de dependencias
 📄 README.md                     # Documentación del proyecto
-📄 .env                          # ⚠️ Variables de entorno (NO se sube a GitHub)
+📄 .env                          # ⚠️ Variables de entorno 
 📄 .gitignore                    # Archivos/carpetas a ignorar por git (incluye .env y node_modules/)
 ```
 
@@ -135,8 +139,7 @@ node app.mjs
 ```
 
 6. **Abrir la aplicación en el navegador**
-- Ir a [http://localhost:3000](http://localhost:3000) para acceder al dashboard.
-
+- Ir a [http://localhost:3000/](http://localhost:3000) para acceder.
 ---
 
 **Haylén Ferrario**    
