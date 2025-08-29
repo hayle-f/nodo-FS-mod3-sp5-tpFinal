@@ -1,30 +1,28 @@
+
 import { obtenerPaisesAPI } from '../services/paisesAPIService.mjs';
 import paisModel from '../models/paisModel.mjs';
 import { connectDB } from '../config/configDB.mjs';
+import mongoose from 'mongoose';
 
-// Conectar a MongoDB
-await connectDB();
-
-// Mi nombre de creador
 const CREATOR = "Haylén Ferrario";
 
-// Traer los países desde la API
-const paises = await obtenerPaisesAPI();
-console.log('Paises obtenidos:', paises.length);
+try {
+  await connectDB();
 
-// Recorrer el array y hacer upsert con creator
-for (const pais of paises) {
-    try {
-        await paisModel.updateOne(
-            { name: pais.name, creator: CREATOR }, // Buscar por nombre + creador
-            { $set: { ...pais, creator: CREATOR } },  // Actualiza o crea con mi creator
-            { upsert: true }
-        );
-    } catch (err) {
-        console.error('Error al actualizar/crear país:', pais.name, err);
-    }
+  // Contar si ya hay países cargados para este creator
+  const count = await paisModel.countDocuments({ creator: CREATOR });
+  if (count > 0) {
+    console.log(`Ya hay ${count} países cargados para ${CREATOR}. No se hará la carga inicial.`);
+    process.exit(0);
+  }
+
+  const paises = await obtenerPaisesAPI();
+  const paisesConCreator = paises.map(pais => ({ ...pais, creator: CREATOR }));
+
+  await paisModel.insertMany(paisesConCreator);
+  console.log(`Carga inicial finalizada: ${paisesConCreator.length} países.`);
+} catch (err) {
+  console.error("Error en la carga inicial:", err);
+} finally {
+  await mongoose.disconnect();
 }
-
-console.log('Carga de países finalizada para', CREATOR);
-
-

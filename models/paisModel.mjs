@@ -17,7 +17,11 @@ const paisesSchema = new mongoose.Schema({
         }
     },
     region: { type: String },
-    subregion: { type: String },
+    subregion: { 
+        type: String, 
+        required: [true, 'La subregión es obligatoria'], 
+        minlength: [3, 'La subregión debe tener al menos 3 caracteres'],
+    },
     languages: { type: [String], default: [] },
     latlng: { type: [Number], default: [] },
     borders: { type: [String], default: [] },

@@ -19,7 +19,7 @@
       <option value="">-- Seleccionar --</option>
       <option value="name">Nombre</option>
       <option value="capital">Capital</option>
-      <option value="region">Región</option>
+      <option value="subregion">Subregión</option>
       <option value="population">Población</option>
     </select>
 
@@ -31,7 +31,7 @@
       <tr>
         <th>Nombre</th>
         <th>Capital</th>
-        <th>Region</th>
+        <th>Subregion</th>
         <th>Población</th>
         <th>Acciones</th>
       </tr>
@@ -41,7 +41,7 @@
         <tr>
           <td><%= pais.name %></td>
           <td><%= pais.capital?.[0] || '-' %></td>
-          <td><%= pais.region || '-' %></td>
+          <td><%= pais.subregion || '-' %></td>
           <td><%= pais.population.toLocaleString() || '-' %></td>
           <td class="acciones">
             <a href="/paises/<%= pais._id %>" title="Ver detalles" class="icono info">➕</a>
@@ -55,7 +55,7 @@
 
 </div>
 
-<script src="/js/filtros.js"></script>
+
+<script src="/js/paginacionYfiltrado.js"></script>
 <script src="/js/mensajes-error.js"></script>
-<script src="/js/paginacion.js"></script>
 

@@ -1,4 +1,4 @@
-import 'dotenv/config'; 
+
 import express from 'express';
 import path from 'path';
 import expressEjsLayouts from 'express-ejs-layouts';
@@ -6,6 +6,10 @@ import { fileURLToPath } from 'url';
 import { connectDB } from './config/configDB.mjs';
 import paisesRoutes from './routes/paisesRoutes.mjs';
 import methodOverride from 'method-override';
+import dotenv from "dotenv";
+
+//asegura que process.env.MONGO_URI y process.env.PORT estén disponibles
+dotenv.config();  
 
 // Configurar __dirname para ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -52,7 +56,7 @@ app.use((req, res) => {
     res.status(404).send({ mensaje: "Ruta no encontrada" });
 });
 
-// Arrancar servidor solo después de conectar a MongoDB
+/* // Arrancar servidor solo después de conectar a MongoDB
 (async () => {
   try {
     await connectDB(); // espera a que la DB esté lista
@@ -62,4 +66,21 @@ app.use((req, res) => {
   } catch (err) {
     console.error('No se pudo iniciar el servidor, error al conectar DB:', err);
   }
+})(); */
+
+// Arrancar servidor solo después de conectar a MongoDB
+(async () => {
+  try {
+    await connectDB(); // espera a que la DB esté lista
+
+    // Importar y ejecutar cron después de conectar a la DB
+    import('./cron/cronActualizarPaises.mjs');
+
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en: http://localhost:${PORT}/`);
+    });
+  } catch (err) {
+    console.error('No se pudo iniciar el servidor, error al conectar DB:', err);
+  }
 })();
+

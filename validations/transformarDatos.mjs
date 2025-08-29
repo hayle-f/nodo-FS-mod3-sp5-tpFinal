@@ -14,7 +14,7 @@ export function transformarDatosPais(req, res, next) {
   datos.languages = transformarStringAArray(datos.languages);
   datos.borders = transformarStringAArray(datos.borders).map(c => c.toUpperCase());
   datos.latlng = transformarStringAArray(datos.latlng).map(Number); 
-  datos.timezones = transformarStringAArray(datos.timezones);
+  datos.timezones = transformarStringAArray(datos.timezones).map(c => c.toUpperCase());
 
   req.body = datos;
   next();

@@ -1,5 +1,8 @@
 
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config(); 
 
 // Función para conectar a la base de datos MongoDB
 export async function connectDB() {

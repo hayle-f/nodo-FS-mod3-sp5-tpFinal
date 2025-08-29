@@ -226,10 +226,6 @@ a {
   letter-spacing: 0.02em;
 }
 
-.infoPais {
-  justify-self: center;
-}
-
 .container h2 {
   text-align: center;
   font-size: 2.2rem;
@@ -446,7 +442,7 @@ footer {
 }
 
 
-.paginacion {
+/* .paginacion {
   display: flex;
   justify-content: center;
   gap: 10px; 
@@ -459,6 +455,43 @@ footer {
 }
 
 .paginacion button.disabled {
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: not-allowed;
+}
+ */
+
+ /* -------- Paginación -------- */
+.paginacion {
+  display: flex;
+  justify-content: center;
+  gap: 10px;      /* separación entre botones */
+  margin-bottom: 8px; /* espacio respecto al resto del contenido */
+}
+
+.paginacion button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #800020;  /* mismo que tus botones */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #80002066;  /* mismo efecto de tus botones */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.paginacion button:hover:not(.disabled):not(.activo) {
+  background-color: #5c0017;  /* hover igual que tus botones */
+  box-shadow: 0 6px 16px #5c001799;
+}
+
+.paginacion button.disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.paginacion button.activo {
+  transform: translateY(-3px); /* eleva un poquito el botón activo */
+  box-shadow: 0 6px 16px #5c001799; /* sombra más marcada */
 }

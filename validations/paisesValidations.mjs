@@ -204,10 +204,10 @@ export const paisValidation = () => [
       return true;
     }),
 
-  // Subregión opcional
+  // Subregión obligatoria
   body('subregion')
-    .optional({ checkFalsy: true })
     .customSanitizer(normalizeString)
+    .notEmpty().withMessage('La subregión es obligatoria.')
     .isLength({ min: 3 }).withMessage('La subregión debe tener al menos 3 caracteres.')
     .custom(value => {
       if (!containsLetter(value)) throw new Error('La subregión debe contener al menos una letra.');
@@ -261,16 +261,18 @@ export const paisValidation = () => [
     .custom(arr => arr.length === 2 && arr.every(n => !isNaN(n)))
     .withMessage('La Latitud y Longitud deben ser dos números separados por coma.'),
 
-  // Timezones opcional
+  // Timezones opcional  
   body('timezones')
     .optional({ checkFalsy: true })
     .customSanitizer(v => {
       if (!v) return [];
       const arr = Array.isArray(v) ? v : v.split(',').map(s => s.trim());
-      return arr.map(normalizeString);
+      return arr.map(s => normalizeString(s).toUpperCase());
     })
-    .custom(arr => arr.every(tz => /^UTC[+-][0-1][0-9]:[0-5][0-9]$/.test(tz)))
-    .withMessage('Cada zona horaria debe tener formato UTC±HH:MM. Ej: UTC-03:00'),
+    .custom(arr => 
+      arr.every(tz => /^UTC(?:\+(0[0-9]|1[0-4]):(00|15|30|45)|-(0[0-9]|1[0-2]):(00|15|30|45))$/.test(tz))
+    )
+    .withMessage('Cada zona horaria debe tener formato UTC±HH:MM. Ej: UTC-03:00, UTC+05:30'),
 
   // Gini opcional
   body('gini')
@@ -280,6 +282,9 @@ export const paisValidation = () => [
   // Flags opcional
   body('flags')
     .optional({ checkFalsy: true })
-    .custom(value => !value || /^https?:\/\/.+/.test(value))
-    .withMessage('La URL de la bandera debe ser válida (http o https).'),
+    .isURL({ protocols: ['http','https'], require_protocol: true })
+    .withMessage('La URL de la bandera debe ser válida (http o https).')
+    .custom(value => /\.(svg|png)$/i.test(value))
+    .withMessage('La URL de la bandera debe ser un archivo SVG o PNG.'),
+
 ];

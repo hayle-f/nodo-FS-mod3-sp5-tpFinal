@@ -20,8 +20,6 @@ export async function obtenerPaisesAPI() {
     }
 }
 
-
-
 // fn para filtrar paises con idioma Español
 function filtrarPaisesEnEspañol(paises) { 
    return paises.filter((pais) => 
