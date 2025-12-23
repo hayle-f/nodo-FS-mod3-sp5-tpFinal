@@ -70,7 +70,7 @@ export async function crearNuevoPaisController(req, res) {
         res.redirect('/paises?exito=creado');
 
     } catch (error) {
-       res.status(500).send({ mensaje: 'Error al crear nuevo pais', error: error.message }); 
+        res.status(500).send({ mensaje: 'Error al crear nuevo pais', error: error.message }); 
     }
 }
 

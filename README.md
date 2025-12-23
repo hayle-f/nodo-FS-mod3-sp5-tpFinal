@@ -1,109 +1,54 @@
-# Dashboard de Países – TP Final Sprint 5
+# Countries Dashboard with Node.js & MongoDB
 
-## 📌 Descripción
+##  Descripción
 
-Este proyecto es una aplicación full stack realizada como trabajo final del Sprint 5 del Módulo 3 de Node.js, de la Diplomatura en Diseño Web Full Stack con JavaScript del Nodo Tecnológico de Catamarca.
-
-La aplicación consume datos de países desde una API externa, almacena los datos filtrados en MongoDB y los presenta en un dashboard dinámico, donde se puede buscar, filtrar, ordenar y explorar detalles de cada país.
+Aplicación full stack (MVC) construida con Node.js y MongoDB que permite explorar, filtrar y administrar información de países mediante un dashboard interactivo. Incluye operaciones CRUD, validaciones robustas y consumo de datos desde una API externa para poblar la base de datos.
 
 ---
 
-## 🎯 Objetivos del Proyecto
+## Funcionalidades principales
 
-- Construir una aplicación web full stack utilizando Node.js, Express y MongoDB.
-- Consumir datos desde la API RESTCountries y filtrar solo los países que hablen español.
-- Limpiar y normalizar los datos recibidos, eliminando campos innecesarios y agregando información propia (ej. “creador”).
-- Persistir los datos filtrados en MongoDB, asegurando integridad y validaciones.
-- Implementar un dashboard interactivo que muestre los países con opciones de búsqueda, filtrado y ordenamiento.
-- Permitir operaciones CRUD completas: agregar, editar y eliminar países desde la interfaz.
-- Garantizar validaciones robustas en backend y mostrar mensajes claros en frontend para datos inválidos.
-- Proporcionar una interfaz amigable con layout consistente, navbar, footer y formularios ergonómicos.
+- Aplicación **full stack (MVC)** con Node.js, Express y MongoDB  
+- **Consumo de datos** desde la API RESTCountries para poblar la base de datos  
+- **Limpieza y normalización** de datos, agregando información propia  
+- **CRUD completo**: agregar, editar, eliminar y ver detalles de países  
+- **Búsqueda, filtros y ordenamiento** en el dashboard  
+- **Validaciones robustas** en backend y frontend  
+- **Actualización automática** de datos desde la API  
+- **Interfaz amigable y consistente** (navbar, footer, formularios)  
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-- Node.js → entorno de ejecución para JavaScript en el backend.
-- Express.js → framework web para manejar rutas, middlewares y controladores.
-- RESTCountries API → fuente de datos externa utilizada para obtener información de países.
-- MongoDB → base de datos NoSQL para almacenar la información de países.
-- Mongoose → ODM para definir esquemas y realizar operaciones sobre MongoDB.
-- EJS → motor de plantillas para renderizar vistas dinámicas en el frontend.
-- Express EJS Layouts → gestión de plantillas maestras y layouts en las vistas.
-- Axios → cliente HTTP para consumir la API externa.
-- Express Validator → middleware para validar datos en formularios y peticiones.
-- Method-Override → permite usar métodos HTTP como PUT y DELETE desde formularios HTML.
-- Node-Cron → programación de tareas periódicas (actualización automática de datos)
-- HTML5, CSS y JS → tecnologías base para la construcción del frontend.
-- Git & GitHub → control de versiones y alojamiento del repositorio.
+- **Node.js** → entorno de ejecución para el backend  
+- **Express.js** → framework para manejar rutas, middlewares y controladores  
+- **RESTCountries API** → fuente de datos externa para obtener información de países  
+- **MongoDB** → base de datos NoSQL  
+- **Mongoose** → ODM para definir esquemas y manejar operaciones sobre MongoDB  
+- **EJS + HTML5, CSS3, JS** → renderizado de vistas dinámicas y frontend  
+- **Axios** → cliente HTTP para consumo de la API externa  
+- **Express Validator** → middleware para validar datos en formularios y peticiones  
+- **Method-Override** → permite usar PUT y DELETE desde formularios HTML  
+- **Node-Cron** → programación de tareas periódicas (actualización automática) 
 
 ---
 
-## 🧱 Estructura del Proyecto
+## 🗂️ Estructura del proyecto
 
-```
-📁 config/                     # Configuraciones generales del proyecto
-   └─ configDB.mjs              # Configuración de la conexión a MongoDB
-
-📁 controllers/                 # Lógica de negocio de la app
-   └─ paisesController.mjs      # Controlador principal de países: maneja requests y responses del CRUD
-
-📁 cron/                        # Node-cron
-   └─ cronActualizarPaises.mjs  # logica que actualiza automáticamente los países cada X horas
-
-📁 models/                      # Modelos de datos (Mongoose)
-   └─ paisModel.mjs             # Modelo País: esquema y validaciones de MongoDB
-
-📁 public/                      # Recursos estáticos accesibles desde el navegador
-   📁 css/
-   │   └─ styles.css            # Estilos CSS del frontend
-   📁 imgs/
-   │   └─ logonode.svg          # Logo e imágenes del proyecto
-   📁 js/
-       ├─ filtros.js            # Lógica de filtros y búsqueda en el dashboard
-       └─ mensajes-error.js     # Manejo de mensajes de error en frontend
-
-📁 repositories/                # Capa de acceso a datos
-   ├─ IRepository.mjs           # Interface genérica de repositorio
-   └─ paisesRepository.mjs      # Implementación del repositorio para países (CRUD DB)
-
-📁 routes/                      # Definición de rutas de la aplicación
-   └─ paisesRoutes.mjs          # Rutas para listado, agregar, editar y eliminar países
-
-📁 seed/                        # Scripts de inicialización de datos
-   └─ cargarPaises.mjs          # Carga inicial de países desde API RESTCountries a MongoDB
-
-📁 services/                    # Lógica de servicios y APIs externas
-   ├─ paisesAPIService.mjs      # Servicio que consume RESTCountries API y devuelve datos filtrados
-   └─ paisesService.mjs         # Servicio que maneja operaciones internas sobre los países
-
-📁 validations/                 # Validaciones de datos
-   ├─ paisesError.mjs           # Mensajes de error personalizados
-   ├─ paisesValidations.mjs     # Validaciones de campos de formularios (backend)
-   └─ transformarDatos.mjs      # Funciones para limpiar y transformar datos antes de guardarlos
-
-📁 views/                        # Vistas EJS de la aplicación
-   ├─ acercaDe.ejs               # Página de información general del proyecto
-   ├─ confirmarEliminacion.ejs   # Modal de confirmación para eliminar país
-   ├─ crearPais.ejs             # Formulario para agregar país
-   ├─ dashboard.ejs             # Tabla de países con filtros y totales
-   ├─ editarPais.ejs            # Formulario para editar país existente
-   ├─ index.ejs                 # Landing / página principal
-   ├─ infoPais.ejs              # Página de información detallada de un país
-   ├─ layout.ejs                # Layout base de todas las vistas (navbar + footer)
-   📁 partials/                  # Partes reutilizables de las vistas
-       ├─ footer.ejs            # Footer global
-       ├─ formPais.ejs          # Formulario parcial usado en crear y editar país
-       ├─ modalinfoPais.ejs     # Modal con información completa del país
-       └─ navbar.ejs            # Barra de navegación global
-
-📄 app.mjs                      # Servidor principal Express + configuración de middlewares
-📄 package.json                  # Dependencias y scripts del proyecto
-📄 package-lock.json             # Lockfile de dependencias
-📄 README.md                     # Documentación del proyecto
-📄 .env                          # ⚠️ Variables de entorno 
-📄 .gitignore                    # Archivos/carpetas a ignorar por git (incluye .env y node_modules/)
-```
+- **config/** → configuración de la conexión a MongoDB (`configDB.mjs`)  
+- **controllers/** → lógica de negocio y manejo de peticiones, controlando CRUD y rutas (`paisesController.mjs`)  
+- **services/** → servicios internos y consumo de APIs externas (`paisesAPIService.mjs`, `paisesService.mjs`)  
+- **repositories/** → acceso a datos y operaciones sobre MongoDB (`paisesRepository.mjs`)  
+- **routes/** → definición de rutas de la aplicación (`paisesRoutes.mjs`)  
+- **seed/** → scripts para poblar la base de datos con información inicial (`cargarPaises.mjs`)  
+- **validations/** → validaciones de datos y mensajes de error personalizados (`paisesValidations.mjs`, `paisesError.mjs`)  
+- **views/** → vistas EJS y plantillas para el frontend (`dashboard.ejs`, `editarPais.ejs`, `partials/`)  
+- **public/** → recursos estáticos (CSS, JS, imágenes, logos)  
+- `app.mjs` → servidor principal, configuración de middlewares y arranque del proyecto  
+- `package.json` → dependencias, scripts y configuración general del proyecto  
+- `.env` → variables de entorno necesarias para la ejecución  
+- `.gitignore` → archivos y carpetas ignoradas por Git
 
 ---
 
@@ -144,35 +89,3 @@ node app.mjs
 
 **Haylén Ferrario**    
 🔗 [GitHub](https://github.com/hayle-f/nodo-FS-mod3-sp5-tpFinal)
-
-
-
-<!-- 
-   name: Reino de España
-
-   capital:  Madrid
-
-   region:  Europe
-
-   subregion:  Southern Europe
-
-   languages:  Spanish
-
-   latlng:   40.0, -4.0
-
-   borders:  AND, FRA, GIB, PRT, MAR
-
-   area:  505992
-
-   population:  47351567
-
-   gini:  34.7
-
-   flags:   https://flagcdn.com/w320/es.png
-
-   timezones:   UTC+01:00
-
-   continents:  Europe
-
-   
-   -->
