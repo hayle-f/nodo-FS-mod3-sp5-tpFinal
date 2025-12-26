@@ -56,8 +56,8 @@ Aplicación full stack (MVC) construida con Node.js y MongoDB que permite explor
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/hayle-f/nodo-FS-mod3-sp5-tpFinal.git
-cd nodo-FS-mod3-sp5-tpFinal
+git clone https://github.com/hayle-f/Dashboard-Paises.git
+cd Dashboard-paises
 ```
 
 2. **Instalar dependencias**
@@ -88,4 +88,4 @@ node app.mjs
 ---
 
 **Haylén Ferrario**    
-🔗 [GitHub](https://github.com/hayle-f/nodo-FS-mod3-sp5-tpFinal)
+🔗 [GitHub](https://github.com/hayle-f/Dashboard-Paises.git)
